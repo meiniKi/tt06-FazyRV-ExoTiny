@@ -1,53 +1,74 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
-  language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
+  title:        "FazyRV-ExoTiny"      # Project title
+  author:       "Meinhard Kissich"    # Your name
+  discord:      ""                    # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "TODO"                # One line description of what your project does
+  language:     "SystemVerilog"       # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "2x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2 -- TODO: adapt later, first make it work
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "meiniKi_tt06_fazyrv_exotiny"
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
-  source_files:        
-    - "project.v"
+  source_files:
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_hadd.v"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_fadd.v"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cmp.v"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_decode.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_decode_mem1.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_alu.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cntrl.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_a.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_d.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_pc.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_shftreg.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_sp.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_dp.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf_lut.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_csr.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_core.sv"
+    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_top.sv"
+    - "../FazyRV-ExoTiny/rtl/gpio.sv"
+    - "../FazyRV-ExoTiny/rtl/wb_qspi_mem.sv"
+    - "../FazyRV-ExoTiny/rtl/exotiny.sv"
+    - "meiniKi_tt06_fazyrv_exotiny.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
-  ui[2]: ""
-  ui[3]: ""
-  ui[4]: ""
-  ui[5]: ""
-  ui[6]: ""
-  ui[7]: ""
+  ui[0]: "NC"
+  ui[1]: "NC"
+  ui[2]: "NC"
+  ui[3]: "NC"
+  ui[4]: "NC"
+  ui[5]: "NC"
+  ui[6]: "NC"
+  ui[7]: "NC"
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
-  uo[5]: ""
-  uo[6]: ""
-  uo[7]: ""
+  uo[0]: "NC"
+  uo[1]: "NC"
+  uo[2]: "NC"
+  uo[3]: "NC"
+  uo[4]: "NC"
+  uo[5]: "NC"
+  uo[6]: "NC"
+  uo[7]: "NC"
 
   # Bidirectional pins
-  uio[0]: ""
-  uio[1]: ""
-  uio[2]: ""
-  uio[3]: ""
-  uio[4]: ""
-  uio[5]: ""
-  uio[6]: ""
-  uio[7]: ""
+  uio[0]: "TODO"
+  uio[1]: "TODO"
+  uio[2]: "TODO"
+  uio[3]: "TODO"
+  uio[4]: "TODO"
+  uio[5]: "TODO"
+  uio[6]: "TODO"
+  uio[7]: "TODO"
 
 # Do not change!
 yaml_version: 6

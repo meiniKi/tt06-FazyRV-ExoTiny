@@ -1,0 +1,3 @@
+[submodule "FazyRV-ExoTiny"]
+	path = FazyRV-ExoTiny
+	url = git@github.com:meiniKi/FazyRV-ExoTiny.git
