@@ -22,7 +22,7 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
 
   logic        cs_rom_n;
   logic        cs_ram_n;
-  logic        gpi;
+  logic        gpo;
   logic        sck;
   logic [4:0]  sdi;
   logic [4:0]  sdo;
@@ -59,8 +59,8 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   ) i_exotiny (
     .clk_i          ( clk     ),
     .rst_in         ( rst_n   ),
-    .gpi_i          ( gpi_i   ),
-    .gpo_o          ( gpo_o   ),
+    .gpi_i          ( 1'b0    ),
+    .gpo_o          ( gpo     ),
 
     .mem_cs_ram_on  ( cs_ram_n  ),
     .mem_cs_rom_on  ( cs_rom_n  ),
