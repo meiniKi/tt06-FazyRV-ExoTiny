@@ -15,27 +15,7 @@ project:
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_hadd.v"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_fadd.v"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cmp.v"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_decode.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_decode_mem1.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_alu.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cntrl.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_a.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_d.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_pc.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_shftreg.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_sp.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_dp.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf_lut.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_csr.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_core.sv"
-    - "../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_top.sv"
-    - "../FazyRV-ExoTiny/rtl/gpio.sv"
-    - "../FazyRV-ExoTiny/rtl/wb_qspi_mem.sv"
-    - "../FazyRV-ExoTiny/rtl/exotiny.sv"
+    - "../build/exotiny_preproc.v"
     - "tt_um_meiniKi_tt06_fazyrv_exotiny.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.

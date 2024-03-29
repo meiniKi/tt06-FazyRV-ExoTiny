@@ -1,0 +1,9 @@
+hierarchy -check -top exotiny
+
+flatten
+proc; opt -full; memory; opt -full; fsm; opt -full
+techmap; opt -full
+splitnets -ports; opt -full
+clean -purge
+flatten
+write_verilog TOP_ENTITY.v

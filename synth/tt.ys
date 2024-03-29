@@ -1,0 +1,27 @@
+
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_hadd.v
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_fadd.v
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cmp.v
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_decode.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_decode_mem1.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_alu.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cntrl.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_a.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_d.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_pc.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_shftreg.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_sp.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_dp.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf_lut.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_csr.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_core.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/FazyRV/rtl/fazyrv_top.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/rtl/gpio.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/rtl/wb_qspi_mem.sv
+read_verilog -sv -defer ../FazyRV-ExoTiny/rtl/exotiny.sv
+
+hierarchy -check -top exotiny
+
+flatten
+write_verilog build/exotiny_preproc.v
