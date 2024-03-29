@@ -23,10 +23,12 @@ read_verilog -sv -defer FazyRV-ExoTiny/rtl/exotiny.sv
 
 chparam -set CHUNKSIZE 2 exotiny
 chparam -set CONF "MIN" exotiny
-chparam -set RFTYPE "BRAM" exotiny
+chparam -set RFTYPE "BRAM_DP" exotiny
 chparam -set GPOCNT 1 exotiny
 
 hierarchy -check -top exotiny
 proc; opt; memory; opt; fsm; opt;
 
+synth;
+clean;
 write_verilog build/exotiny_preproc.v
