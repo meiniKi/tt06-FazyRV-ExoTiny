@@ -16,9 +16,11 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   input  wire       rst_n     // reset_n - low to reset
 );
 
-  localparam CHUNKSIZE  = 2;
-  localparam CONF       = "MIN";
-  localparam RFTYPE     = "BRAM";
+  // See preprocessing
+  //
+  //localparam CHUNKSIZE  = 2;
+  //localparam CONF       = "MIN";
+  //localparam RFTYPE     = "BRAM";
 
   logic        cs_rom_n;
   logic        cs_ram_n;
@@ -51,12 +53,7 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
 
   assign sdi = {uio_in[5], uio_in[4], uio_in[2], uio_in[1]};
 
-  exotiny #( 
-    .CHUNKSIZE  ( CHUNKSIZE ),
-    .CONF       ( CONF      ),
-    .RFTYPE     ( RFTYPE    ),
-    .GPOCNT     ( 'd1       )
-  ) i_exotiny (
+  exotiny i_exotiny (
     .clk_i          ( clk     ),
     .rst_in         ( rst_n   ),
     .gpi_i          ( 1'b0    ),
