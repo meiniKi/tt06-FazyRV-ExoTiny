@@ -22,6 +22,7 @@ jobs:
           yosys -s synth/tt.ys
 
   gds:
+    needs: preproc
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
