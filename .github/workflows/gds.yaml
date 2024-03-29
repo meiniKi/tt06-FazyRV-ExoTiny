@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: exotiny_preproc
-          path: ./build/exotiny_preproc.v
+          path: ./build
 
       - name: Build GDS
         uses: TinyTapeout/tt-gds-action@tt06
