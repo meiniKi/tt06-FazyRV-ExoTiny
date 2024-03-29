@@ -26,9 +26,9 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   logic        cs_ram_n;
   logic        gpo;
   logic        sck;
-  logic [4:0]  sdi;
-  logic [4:0]  sdo;
-  logic [4:0]  sdoen;
+  logic [3:0]  sdi;
+  logic [3:0]  sdo;
+  logic [3:0]  sdoen;
 
   // TODO: final usage of IOs once rest is working
   assign uo_out  = 0;
