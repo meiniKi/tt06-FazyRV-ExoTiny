@@ -23,5 +23,6 @@ read_verilog -sv -defer FazyRV-ExoTiny/rtl/exotiny.sv
 
 hierarchy -check -top exotiny
 
-flatten
+proc; opt; memory; opt; fsm; opt;
+
 write_verilog build/exotiny_preproc.v
