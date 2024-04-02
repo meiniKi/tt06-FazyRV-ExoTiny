@@ -21,9 +21,9 @@ read_verilog -sv -defer FazyRV-ExoTiny/rtl/gpio.sv
 read_verilog -sv -defer FazyRV-ExoTiny/rtl/wb_qspi_mem.sv
 read_verilog -sv -defer FazyRV-ExoTiny/rtl/exotiny.sv
 
-chparam -set CHUNKSIZE 2 exotiny
+chparam -set CHUNKSIZE 1 exotiny
 chparam -set CONF "MIN" exotiny
-chparam -set RFTYPE "BRAM_BP" exotiny
+chparam -set RFTYPE "BRAM" exotiny
 chparam -set GPOCNT 1 exotiny
 
 hierarchy -check -top exotiny
