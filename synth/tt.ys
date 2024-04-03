@@ -1,4 +1,6 @@
 
+read_verilog synth/bb_sky130_fd_sc_hd__dlygate4sd3_1.v
+
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_hadd.v
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_fadd.v
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cmp.v
