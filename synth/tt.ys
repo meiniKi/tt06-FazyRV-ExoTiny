@@ -8,8 +8,8 @@ read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_alu.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_cntrl.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_a.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_spm_d.sv
-read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_pc.sv
-read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_shftreg.sv
+read_verilog -sv -defer -DSKY130 FazyRV-ExoTiny/FazyRV/rtl/fazyrv_pc.sv
+read_verilog -sv -defer -DSKY130 FazyRV-ExoTiny/FazyRV/rtl/fazyrv_shftreg.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_sp.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_dp.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf_lut.sv
@@ -25,6 +25,7 @@ chparam -set CHUNKSIZE 2 exotiny
 chparam -set CONF "MIN" exotiny
 chparam -set RFTYPE "LOGIC" exotiny
 chparam -set GPOCNT 1 exotiny
+
 
 hierarchy -check -top exotiny
 proc; opt; memory; opt; fsm; opt;
