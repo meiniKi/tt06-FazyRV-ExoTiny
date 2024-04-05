@@ -14,7 +14,7 @@ read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_pc.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_shftreg.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_sp.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_ram_dp.sv
-read_verilog -sv -defer -DTT06_SKY130_RVE FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf_lut.sv
+read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf_lut.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_csr.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_core.sv
