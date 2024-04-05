@@ -28,9 +28,8 @@ read_verilog -sv -defer FazyRV-ExoTiny/rtl/exotiny.sv
 chparam -set CHUNKSIZE 1 exotiny
 chparam -set CONF "MIN" exotiny
 chparam -set RFTYPE "LOGIC" exotiny
-chparam -set GPICNT 3 exotiny
-chparam -set GPOCNT 3 exotiny
-
+chparam -set GPICNT 6 exotiny
+chparam -set GPOCNT 6 exotiny
 
 hierarchy -check -top exotiny
 proc_clean
