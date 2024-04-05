@@ -80,7 +80,7 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
     .mem_sck_o      ( sck       ),
     .mem_sd_i       ( sdi       ),
     .mem_sd_o       ( sdo       ),
-    .mem_sd_oen_o   ( sdoen     )
+    .mem_sd_oen_o   ( sdoen     ),
 
     .spi_sck_o      ( spi_sck   ),
     .spi_sdo_o      ( spi_sdo   ),
