@@ -30,19 +30,6 @@ chparam -set GPOCNT 1 exotiny
 
 
 hierarchy -check -top exotiny
-proc_clean
-proc_rmdead
-proc_prune
-proc_init
-proc_arst
-proc_rom
-proc_mux
-proc_dlatch
-proc_dff
-proc_memwr
-proc_clean
-check
-opt_expr
 flatten
 
 write_verilog build/exotiny_preproc.v
