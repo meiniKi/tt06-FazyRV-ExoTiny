@@ -21,7 +21,7 @@ read_verilog -sv -defer FazyRV-ExoTiny/rtl/wb_regs.sv
 read_verilog -sv -defer FazyRV-ExoTiny/rtl/wb_spi.sv
 read_verilog -sv -defer FazyRV-ExoTiny/rtl/exotiny.sv
 
-chparam -set CHUNKSIZE 1 exotiny
+chparam -set CHUNKSIZE 2 exotiny
 chparam -set CONF "MIN" exotiny
 chparam -set RFTYPE "LOGIC" exotiny
 chparam -set GPICNT 6 exotiny
