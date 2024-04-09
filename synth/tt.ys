@@ -68,4 +68,4 @@ check
 opt_clean
 clean -purge
 
-write_verilog build/exotiny_preproc.v
+write_verilog -noattr -nohex -nodec build/exotiny_preproc.v
