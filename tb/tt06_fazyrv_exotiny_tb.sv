@@ -28,21 +28,16 @@ end
 reg [31:0] shift_reg = 32'd0;
 reg prev_cpu_dmem_stb;
 
-logic tb_wb_regs_stb;
-
-assign tb_wb_regs_stb = i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.\i_fazyrv_top.i_fazyrv_core.wb_dmem_stb_o & 
-                        (i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_adr[31:28] == 4'b0010);
-
 always @(posedge clk) begin
   prev_cpu_dmem_stb <= i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_stb;
-  if (~|i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_adr[4:0] & ~prev_cpu_dmem_stb & tb_wb_regs_stb) begin
+  if (~|i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_adr[4:0] & i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_cyc & ~prev_cpu_dmem_stb & i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_stb) begin
     $write("%c", i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_mem_wdat);
     $fflush();
   end
 end
 
 always_ff @(posedge clk) begin
-  if (~|i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_adr[4:0] & ~prev_cpu_dmem_stb & tb_wb_regs_stb) begin
+  if (~|i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_adr[4:0] && i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_cyc & ~prev_cpu_dmem_stb & i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_stb) begin
     shift_reg <= {shift_reg[23:0], i_tt06_fazyrv_exotiny_sim.i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_wdat[7:0]};  // shift in new data
   end
 end
