@@ -59,7 +59,7 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   assign uo_out[7]    = spi_sdo;
 
   // GPIs, SPI inputs 
-  assign gpi[6:0]     = ui_in[5:0];
+  assign gpi[6:0]     = ui_in[6:0];
   assign spi_sdi      = ui_in[7];
 
   exotiny i_exotiny (

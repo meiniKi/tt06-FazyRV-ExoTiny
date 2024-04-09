@@ -65,5 +65,7 @@ opt -fast
 hierarchy -check
 stat
 check
+opt_clean
+clean -purge
 
 write_verilog build/exotiny_preproc.v
