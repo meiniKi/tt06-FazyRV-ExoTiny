@@ -28,9 +28,42 @@ chparam -set GPICNT 7 exotiny
 chparam -set GPOCNT 6 exotiny
 
 hierarchy -check -top exotiny
-proc; opt; memory; opt; fsm; opt;
-
-synth;
-clean;
+proc_clean
+proc_rmdead
+proc_prune
+proc_init
+proc_arst
+proc_rom
+proc_mux
+proc_dlatch
+proc_dff
+proc_memwr
+proc_clean
+check
+opt_expr
+flatten
+opt_expr
+opt_clean
+opt -nodffe -nosdff
+fsm
+opt
+wreduce
+peepopt
+opt_clean
+alumacc
+share
+opt
+memory -nomap
+opt_clean
+opt -fast -full
+memory_map
+opt -full
+techmap
+opt -fast
+abc -fast
+opt -fast
+hierarchy -check
+stat
+check
 
 write_verilog build/exotiny_preproc.v
