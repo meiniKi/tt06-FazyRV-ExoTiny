@@ -3,52 +3,49 @@ project:
   title:        "FazyRV-ExoTiny"      # Project title
   author:       "Meinhard Kissich"    # Your name
   discord:      ""                    # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "TODO"                # One line description of what your project does
-  language:     "SystemVerilog"       # other examples include SystemVerilog, Amaranth, VHDL, etc
-  clock_hz:     20000000              # Clock frequency in Hz (or 0 if not applicable)
+  description:  "A minimal SoC based on FazyRV that uses external QSPI ROM and RAM."
+  language:     "SystemVerilog"
+  clock_hz:     50000000
 
-  # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "2x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2 -- TODO: adapt later, first make it work
+  # A single tile is about 167x108 uM.
+  tiles: "2x2"
 
-  # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_meiniKi_tt06_fazyrv_exotiny"
-  
-  # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
+
   source_files:
     - "../build/exotiny_preproc.v"
     - "tt_um_meiniKi_tt06_fazyrv_exotiny.sv"
 
-# The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: "NC"
-  ui[1]: "NC"
-  ui[2]: "NC"
-  ui[3]: "NC"
-  ui[4]: "NC"
-  ui[5]: "NC"
-  ui[6]: "NC"
-  ui[7]: "NC"
+  ui[0]: "General purpose input (GPI) 0."
+  ui[1]: "General purpose input (GPI) 1."
+  ui[2]: "General purpose input (GPI) 2."
+  ui[3]: "General purpose input (GPI) 3."
+  ui[4]: "General purpose input (GPI) 4."
+  ui[5]: "General purpose input (GPI) 5."
+  ui[6]: "General purpose input (GPI) 6."
+  ui[7]: "(User) SPI SDI."
 
   # Outputs
-  uo[0]: "NC"
-  uo[1]: "NC"
-  uo[2]: "NC"
-  uo[3]: "NC"
-  uo[4]: "NC"
-  uo[5]: "NC"
-  uo[6]: "NC"
-  uo[7]: "NC"
+  uo[0]: "General purpose output (GPO) 0."
+  uo[1]: "General purpose output (GPO) 1."
+  uo[2]: "General purpose output (GPO) 2."
+  uo[3]: "General purpose output (GPO) 3."
+  uo[4]: "General purpose output (GPO) 4."
+  uo[5]: "General purpose output (GPO) 5."
+  uo[6]: "(User) SPI SCK."
+  uo[7]: "(User) SPI SDO."
 
   # Bidirectional pins
-  uio[0]: "TODO"
-  uio[1]: "TODO"
-  uio[2]: "TODO"
-  uio[3]: "TODO"
-  uio[4]: "TODO"
-  uio[5]: "TODO"
-  uio[6]: "TODO"
-  uio[7]: "TODO"
+  uio[0]: "QSPI ROM chip select (low active)."
+  uio[1]: "QSPI ROM/RAM SDO[0]."
+  uio[2]: "QSPI ROM/RAM SDO[1]."
+  uio[3]: "QSPI ROM/RAM SCK."
+  uio[4]: "QSPI ROM/RAM SDO[2]."
+  uio[5]: "QSPI ROM/RAM SDO[3]."
+  uio[6]: "QSPI RAM chip select (low active)."
+  uio[7]: "NC."
 
 # Do not change!
 yaml_version: 6

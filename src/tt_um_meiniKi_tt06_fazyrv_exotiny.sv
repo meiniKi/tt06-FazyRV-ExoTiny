@@ -16,23 +16,23 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   input  wire       rst_n     // reset_n - low to reset
 );
 
-  // See preprocessing
-  //
-  //localparam CHUNKSIZE  = 2;
-  //localparam CONF       = "MIN";
-  //localparam RFTYPE     = "BRAM";
+  logic       cs_rom_n;
+  logic       cs_ram_n;
 
-  logic        cs_rom_n;
-  logic        cs_ram_n;
-  logic        gpo;
-  logic        sck;
-  logic [3:0]  sdi;
-  logic [3:0]  sdo;
-  logic [3:0]  sdoen;
+  logic [5:0] gpo;
+  logic [6:0] gpi;
 
-  // TODO: final usage of IOs once rest is working
-  assign uo_out  = 0;
+  logic       spi_sck;
+  logic       spi_sdo;
+  logic       spi_sdi;
 
+  logic       sck;
+  logic [3:0] sdi;
+  logic [3:0] sdo;
+  logic [3:0] sdoen;
+
+  // QSPI ROM / RAM interface
+  // on purpose additional tristate IOs are avoided
   assign uio_out[0] = cs_rom_n;
   assign uio_out[1] = sdo[0];
   assign uio_out[2] = sdo[1];
@@ -40,31 +40,45 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   assign uio_out[4] = sdo[2];
   assign uio_out[5] = sdo[3];
   assign uio_out[6] = cs_ram_n;
-  assign uio_out[7] = gpo;
+  assign uio_out[7] = 1'b0;
 
-  assign uio_oe[0] = 1'b1;
+  assign uio_oe[0] = rst_n;
   assign uio_oe[1] = sdoen[0];
   assign uio_oe[2] = sdoen[1];
-  assign uio_oe[3] = 1'b1;
+  assign uio_oe[3] = rst_n;
   assign uio_oe[4] = sdoen[2];
   assign uio_oe[5] = sdoen[3];
-  assign uio_oe[6] = 1'b1;
-  assign uio_oe[7] = 1'b1;
+  assign uio_oe[6] = rst_n;
+  assign uio_oe[7] = 1'b0;
 
   assign sdi = {uio_in[5], uio_in[4], uio_in[2], uio_in[1]};
 
+  // GPOs, SPI outputs 
+  assign uo_out[5:0]  = gpo;
+  assign uo_out[6]    = spi_sck;
+  assign uo_out[7]    = spi_sdo;
+
+  // GPIs, SPI inputs 
+  assign gpi[6:0]     = ui_in[6:0];
+  assign spi_sdi      = ui_in[7];
+
   exotiny i_exotiny (
-    .clk_i          ( clk     ),
-    .rst_in         ( rst_n   ),
-    .gpi_i          ( 1'b0    ),
-    .gpo_o          ( gpo     ),
+    .clk_i          ( clk       ),
+    .rst_in         ( rst_n     ),
+
+    .gpi_i          ( gpi       ),
+    .gpo_o          ( gpo       ),
 
     .mem_cs_ram_on  ( cs_ram_n  ),
     .mem_cs_rom_on  ( cs_rom_n  ),
     .mem_sck_o      ( sck       ),
     .mem_sd_i       ( sdi       ),
     .mem_sd_o       ( sdo       ),
-    .mem_sd_oen_o   ( sdoen     )
-  );
+    .mem_sd_oen_o   ( sdoen     ),
+
+    .spi_sck_o      ( spi_sck   ),
+    .spi_sdo_o      ( spi_sdo   ),
+    .spi_sdi_i      ( spi_sdi   )
+);
 
 endmodule

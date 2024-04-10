@@ -16,14 +16,16 @@ read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_rf.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_csr.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_core.sv
 read_verilog -sv -defer FazyRV-ExoTiny/FazyRV/rtl/fazyrv_top.sv
-read_verilog -sv -defer FazyRV-ExoTiny/rtl/gpio.sv
 read_verilog -sv -defer FazyRV-ExoTiny/rtl/wb_qspi_mem.sv
+read_verilog -sv -defer FazyRV-ExoTiny/rtl/wb_regs.sv
+read_verilog -sv -defer FazyRV-ExoTiny/rtl/wb_spi.sv
 read_verilog -sv -defer FazyRV-ExoTiny/rtl/exotiny.sv
 
-chparam -set CHUNKSIZE 1 exotiny
+chparam -set CHUNKSIZE 2 exotiny
 chparam -set CONF "MIN" exotiny
 chparam -set RFTYPE "LOGIC" exotiny
-chparam -set GPOCNT 1 exotiny
+chparam -set GPICNT 7 exotiny
+chparam -set GPOCNT 6 exotiny
 
 hierarchy -check -top exotiny
 proc_clean
@@ -63,5 +65,7 @@ opt -fast
 hierarchy -check
 stat
 check
+opt_clean
+clean -purge
 
-write_verilog build/exotiny_preproc.v
+write_verilog -noattr -nohex -nodec build/exotiny_preproc.v

@@ -1,0 +1,28 @@
+
+set_io clk_i        R9
+set_io rst_i        K11
+
+set_io led_rst_n    C8
+set_io led_r_n      F7
+set_io led_g_n      K9
+
+set_io cs_rom_on    D8
+set_io sdio_io[0]   B9
+set_io sdio_io[1]   B10
+set_io sck_o        B11
+set_io sdio_io[2]   B8
+set_io sdio_io[3]   A9
+set_io cs_ram_on    A10
+
+set_io spi_sck_o    A5
+set_io spi_sdo_o    A2
+set_io spi_sdi_i    C3
+
+set_io dbg_o[0]     L9
+set_io dbg_o[1]     G5
+set_io dbg_o[2]     L7
+set_io dbg_o[3]     N6
+set_io dbg_o[4]     N9
+set_io dbg_o[5]     P9
+set_io dbg_o[6]     M8
+set_io dbg_o[7]     N7
