@@ -24,6 +24,13 @@ jobs:
           cocotb-config --libpython
           cocotb-config --python-bin
 
+      - name: setup gcc
+        uses: ./.github/workflows/setup-riscv-toolchain
+
+      - name: build test firmware
+        run: |
+          cd sim && make firmware
+
       - name: Run tests
         run: |
           cd test
