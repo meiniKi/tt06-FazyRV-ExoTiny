@@ -13,10 +13,6 @@ ICO_SYNTH_FILE = $(BUILD_DIR)/ico_synth.json
 ICO_ASC_FILE = $(BUILD_DIR)/ico_impl.asc
 ICO_BIN_FILE = $(BUILD_DIR)/ico.bin
 
-prepare:
-	fusesoc library add exotiny ../
-
-
 validation.icoboard: $(FIRMWARE) $(BUILD_DIR)
 	$(YOSYS) -p "read_verilog ../build/exotiny_preproc.v;  read_verilog -sv ../src/tt_um_meiniKi_tt06_fazyrv_exotiny.sv; \
 				read_verilog -sv ice40/tt06_fazyrv_exotiny_valid.sv; \
