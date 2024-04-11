@@ -23,6 +23,9 @@ async def test(dut):
   await Timer(1, units="us")
   dut.rst_n.value = 1
 
+  await ClockCycles(dut.clk, 20)
+  assert dut.test_done.value.binstr != "x"
+
   await RisingEdge(dut.test_done)
   await FallingEdge(dut.clk)
   assert dut.test_pass.value == 1

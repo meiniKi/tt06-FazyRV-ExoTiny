@@ -12,6 +12,15 @@ module tb ();
     #1;
   end
 
+  initial begin
+    $timeformat(-3, 0, "ms", 12);
+    while(1) begin
+      #100_000_000;
+      $display("(%t)", $realtime);
+    end
+
+  end
+
   reg clk;
   reg rst_n;
 
