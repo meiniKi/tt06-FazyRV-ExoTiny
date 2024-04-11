@@ -20,6 +20,9 @@ This TinyTapeout implements a System-on-Chip (SoC) design based on the FazyRV RI
 | **clk**   | Clock       | up to 50MHz |
 | **rst_n** | Reset       | low active  |
 
+> [!IMPORTANT]  
+> `rst_n` is not synchronized. Make sure it is released sufficient hold time after the rising clock edge and sufficient setup time before the falling edge. Do not release reset while `clk` is low. The design appears to be on the edge of implementability. An additional dff breaks convergence.
+
 
 ## Pin Description
 
@@ -47,9 +50,35 @@ Further documentation can be found at [meiniKi/FazyRV-ExoTiny](https://github.co
 
 ## Quick Start
 
+## Init the Repo
+
+```shell
+git submodule update --init --recursive
+```
+
 ### Run Preprocessing
 
 ```shell
-mkdir build
-yosys -s synth/tt.ys
+make preproc
 ```
+
+### Run Simulation
+
+```shell
+make sim
+```
+
+The `sim` target builds the risc-v tests in `FazyRV-ExoTiny/sim/firmware` and executes them on the pre-processed SoC design and the testbench in `tb`.
+
+
+### Run Cocotb Simulation
+
+```shell
+make sim.cocotb.default
+# or
+make sim.cocotb.gl
+# to run gate level simulation. Needs gate_level_netlist.v to be copied to `test` 
+```
+
+The cocotb simulation is designed to also work with the post-synthesized design. Thus, it provides less debugging information and is only recommended to be used after `make sim` passes.
+

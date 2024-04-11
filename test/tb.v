@@ -29,6 +29,10 @@ module tb ();
   wire [7:0]  uio_oe;
 
   tt_um_meiniKi_tt06_fazyrv_exotiny i_tt_um_meiniKi_tt06_fazyrv_exotiny (
+`ifdef GL_TEST
+      .VPWR(1'b1),
+      .VGND(1'b0),
+`endif
     .ui_in    ( {spi_sdi, gpi}          ),
     .uo_out   ( {spi_sdo, spi_sck, gpo} ),
     .uio_in   ( uio_io                  ),

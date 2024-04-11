@@ -4,7 +4,7 @@
 
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import Event, ClockCycles, Combine, RisingEdge, FallingEdge
+from cocotb.triggers import Event, ClockCycles, RisingEdge, FallingEdge, Timer
 
 finish_or_fatal_event = Event()
 
@@ -20,7 +20,7 @@ async def test(dut):
   dut._log.info("Reset")
   dut.rst_n.value = 0
   await ClockCycles(dut.clk, 20)
-  await FallingEdge(dut.clk)
+  await Timer(1, units="us")
   dut.rst_n.value = 1
 
   await RisingEdge(dut.test_done)
