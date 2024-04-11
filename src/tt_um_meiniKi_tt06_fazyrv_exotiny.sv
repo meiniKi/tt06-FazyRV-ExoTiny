@@ -31,6 +31,11 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   logic [3:0] sdo;
   logic [3:0] sdoen;
 
+  // Reset sync
+  // The one additional flop seems to stop detailed routing from converging.
+  //logic       rst_sync_n;
+  //always_ff @(posedge clk) rst_sync_n <= rst_n;
+
   // QSPI ROM / RAM interface
   // on purpose additional tristate IOs are avoided
   assign uio_out[0] = cs_rom_n;
@@ -42,13 +47,16 @@ module tt_um_meiniKi_tt06_fazyrv_exotiny (
   assign uio_out[6] = cs_ram_n;
   assign uio_out[7] = 1'b0;
 
-  assign uio_oe[0] = rst_n;
+  // drive cs and sck in reset but
+  // disable with enable --> might cause startup issues otherwise
+  //
+  assign uio_oe[0] = ena;
   assign uio_oe[1] = sdoen[0];
   assign uio_oe[2] = sdoen[1];
-  assign uio_oe[3] = rst_n;
+  assign uio_oe[3] = ena;
   assign uio_oe[4] = sdoen[2];
   assign uio_oe[5] = sdoen[3];
-  assign uio_oe[6] = rst_n;
+  assign uio_oe[6] = ena;
   assign uio_oe[7] = 1'b0;
 
   assign sdi = {uio_in[5], uio_in[4], uio_in[2], uio_in[1]};

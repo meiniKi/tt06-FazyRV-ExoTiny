@@ -5,19 +5,26 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+
+SRC_SOC 	= $(wildcard ../build/*.v)
+SRC_TT 		= $(wildcard ../src/*.v ../src/*.sv)
+SRC_MODELS 	= ../FazyRV-ExoTiny/tb/spiflash.v ../FazyRV-ExoTiny/tb/qspi_psram.sv
+
+FIRMWARE 	= ../FazyRV-ExoTiny/sim/firmware/rom.hex
+
+PLUSARGS 	= +firmware=$(FIRMWARE)
 
 ifneq ($(GATES),yes)
 
 # RTL simulation:
-SIM_BUILD				= sim_build/rtl
-VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES))
-COMPILE_ARGS 		+= -I$(SRC_DIR)
+SIM_BUILD		= sim_build/rtl
+VERILOG_SOURCES += $(SRC_SOC) $(SRC_TT) $(SRC_MODELS)
+COMPILE_ARGS 	+= -I$(SRC_DIR)
 
 else
 
 # Gate level simulation:
-SIM_BUILD				= sim_build/gl
+SIM_BUILD		= sim_build/gl
 COMPILE_ARGS    += -DGL_TEST
 COMPILE_ARGS    += -DFUNCTIONAL
 COMPILE_ARGS    += -DUSE_POWER_PINS
@@ -27,7 +34,7 @@ VERILOG_SOURCES += $(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitiv
 VERILOG_SOURCES += $(PDK_ROOT)/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
 
 # this gets copied in by the GDS action workflow
-VERILOG_SOURCES += $(PWD)/gate_level_netlist.v
+VERILOG_SOURCES += $(PWD)/gate_level_netlist.v $(SRC_MODELS)
 
 endif
 

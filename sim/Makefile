@@ -20,6 +20,9 @@ testbench.vvp: $(SRC_SOC) $(SRC_TT) $(SRC_MODELS) $(SRC_SIM)
 	$(IVERILOG) -g2005-sv -DSIM -DDEBUG -o $@ $^
 	chmod -x $@
 
+firmware: $(FIRMWARE)
+	@echo "done"
+
 $(FIRMWARE):
 	make -C ../FazyRV-ExoTiny/sim/ firmware/rom.hex
 

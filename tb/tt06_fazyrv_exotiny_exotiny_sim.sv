@@ -31,7 +31,7 @@ tt_um_meiniKi_tt06_fazyrv_exotiny i_tt_um_meiniKi_tt06_fazyrv_exotiny (
   .uio_in   ( uio_io                  ),
   .uio_out  ( uio_out                 ),
   .uio_oe   ( uio_oe                  ),
-  .ena      (),
+  .ena      ( 1'b1                    ),
   .clk      ( clk_i                   ),
   .rst_n    ( rst_in                  )
 );

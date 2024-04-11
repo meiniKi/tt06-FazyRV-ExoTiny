@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Install iverilog
         shell: bash
@@ -23,6 +25,23 @@ jobs:
           pip install cocotb~=1.8.0
           cocotb-config --libpython
           cocotb-config --python-bin
+
+      - name: oss-cad-suite
+        uses: YosysHQ/setup-oss-cad-suite@v3
+        with:
+          version: '2024-02-02'
+
+      - name: setup gcc
+        uses: ./.github/workflows/setup-riscv-toolchain
+
+      - name: Run Yosys
+        run: |
+          mkdir build
+          yosys -s synth/tt.ys
+
+      - name: build test firmware
+        run: |
+          cd sim && make firmware
 
       - name: Run tests
         run: |
