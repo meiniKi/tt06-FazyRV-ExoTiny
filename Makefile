@@ -1,5 +1,4 @@
 
-
 preproc:
 	mkdir -p build
 	yosys -s synth/tt.ys

@@ -19,7 +19,6 @@ module tb ();
       #100_000_000;
       $display("(%t)", $realtime);
     end
-
   end
 
   reg clk;
@@ -87,42 +86,11 @@ module tb ();
   assign gpi =  gpo[1] ? 6'h15 : 
                 gpo[0] ? 6'h2A : 'h0;
 
-  // cocotb
-
+  // pass / fail
   wire test_done;
   wire test_pass;
 
   assign test_done = gpo[5] & gpo[3];
   assign test_pass = test_done & gpo[4];
-
-  // Hack when solution when not traps are implemented.
-  //reg [31:0] shift_reg = 32'd0;
-  //reg prev_cpu_dmem_stb;
-
-  //always @(posedge clk) begin
-  //  prev_cpu_dmem_stb <= i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_stb;
-  //  if ((i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_adr[4:0] == 'hC ) & i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_cyc & ~prev_cpu_dmem_stb & i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_stb) begin
-  //    $write("%c", i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_mem_wdat);
-  //    $fflush();
-  //  end
-  //end
-
-  //always_ff @(posedge clk) begin
-  //  if ((i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_adr[4:0] == 'hC ) & i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_regs_cyc & ~prev_cpu_dmem_stb & i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_stb) begin
-  //    shift_reg <= {shift_reg[23:0], i_tt_um_meiniKi_tt06_fazyrv_exotiny.i_exotiny.wb_cpu_dmem_wdat[7:0]};  // shift in new data
-  //  end
-  //end
-
-  //`ifndef SIGNATURE
-  //always_ff @(posedge clk) begin
-  //  if (shift_reg == {"D", "O", "N", "E"}) begin
-  //    $finish;
-  //  end
-  //  if (shift_reg[23:0] == {"E", "R", "R"}) begin
-  //    $fatal;
-  //  end
-  //end
-  //`endif
-
 
 endmodule

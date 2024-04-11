@@ -12,5 +12,3 @@ test/gate_level_netlist.v
 build
 *.vvp
 .venv
-post_synth
-test/gate_level_netlist.v
