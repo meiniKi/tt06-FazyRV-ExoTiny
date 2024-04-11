@@ -8,11 +8,12 @@ module tb ();
   // Dump the signals to a VCD file. You can view it with gtkwave.
   initial begin
     $dumpfile("tb.vcd");
-    $dumpvars(1, tb);
+    $dumpvars(0, tb);
     #1;
   end
 
   initial begin
+    $display("[tb.v] Simulation started");
     $timeformat(-3, 0, "ms", 12);
     while(1) begin
       #100_000_000;
