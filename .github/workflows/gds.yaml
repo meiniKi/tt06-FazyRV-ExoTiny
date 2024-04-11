@@ -63,6 +63,13 @@ jobs:
         with:
           submodules: recursive
 
+      - name: setup gcc
+        uses: ./.github/workflows/setup-riscv-toolchain
+
+      - name: build test firmware
+        run: |
+          cd sim && make firmware
+
       - name: GL test
         uses: TinyTapeout/tt-gds-action/gl_test@tt06
 
