@@ -24,7 +24,7 @@ jobs:
           yosys -s synth/tt.ys
 
       - name: Upload preprocessed verilog
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: exotiny_preproc
           path: ./build/exotiny_preproc.v
@@ -39,7 +39,7 @@ jobs:
           submodules: recursive
 
       - name: Download preprocessed verilog
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: exotiny_preproc
           path: ./build
