@@ -12,3 +12,4 @@ test/gate_level_netlist.v
 build
 *.vvp
 .venv
+fusesoc.conf

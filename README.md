@@ -82,3 +82,6 @@ make sim.cocotb.gl
 
 The cocotb simulation is designed to also work with the post-synthesized design. Thus, it provides less debugging information and is only recommended to be used after `make sim` passes.
 
+# Bring-up Demo
+
+See `demo/README.md`

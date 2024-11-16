@@ -1,0 +1,26 @@
+CAPI=2:
+name: ::tt06emu:0.0.1
+description: Emulating tt06 on ULX3S
+
+filesets:
+  soc:
+    files:
+      - build/exotiny_preproc.v: {file_type: verilogSource}
+      - src/tt_um_meiniKi_tt06_fazyrv_exotiny.sv
+      - demo/rtl/top_emulation.sv
+    file_type: systemVerilogSource
+
+  ulx3s:
+    files:
+      - demo/constraints/ulx3s.lpf: {file_type: LPF}
+    file_type: user
+
+targets:
+  ulx3s:
+    default_tool: trellis
+    filesets: [soc, ulx3s]
+    tools:
+      trellis:
+        nextpnr_options: [--85k, --package, CABGA381, --speed, 8]
+    toplevel: top_emulation
+
