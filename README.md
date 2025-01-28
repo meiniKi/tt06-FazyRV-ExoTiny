@@ -15,10 +15,10 @@ This TinyTapeout implements a System-on-Chip (SoC) design based on the FazyRV RI
 * Provides an SPI peripheral with programmable CPOL and a buffer of up to 4 bytes.
 
 
-| Pin       | Description | Note        |
-| --------- | ----------- | ----------- |
-| **clk**   | Clock       | up to 50MHz |
-| **rst_n** | Reset       | low active  |
+| Pin       | Description | Note         |
+| --------- | ----------- | ------------ |
+| **clk**   | Clock       | up to ~20MHz |
+| **rst_n** | Reset       | low active   |
 
 > [!IMPORTANT]  
 > `rst_n` is not synchronized. Make sure it is released sufficient hold time after the rising clock edge and sufficient setup time before the falling edge. Do not release reset while `clk` is low. The design appears to be on the edge of implementability. An additional dff breaks convergence.
